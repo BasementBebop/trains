@@ -1,0 +1,13 @@
+<h1>Stations:</h1>
+
+<% if @stations.any?() %>
+  <p>Select a station to see the lines that stop at the station:</p>
+
+  <ul>
+    <% @stations.each do |station| %>
+      <li><a href="/stations/<%= station.id() %>"><%= station.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No current stations (use your legs stupid)</p>
+<% end %>

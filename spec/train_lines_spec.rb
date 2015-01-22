@@ -1,5 +1,6 @@
 require("spec_helper")
 
+
 describe(Line) do
 
   describe(".all") do
@@ -9,7 +10,7 @@ describe(Line) do
   end
 
   describe("#==") do
-    it("is the same task if it has the same description") do
+    it("is the same line if it has the same description") do
       line1 = Line.new({:name => "NW Line", :id => 1})
       line2 = Line.new({:name => "NW Line", :id => 1})
       expect(line1).to(eq(line2))
@@ -33,10 +34,26 @@ describe(Line) do
 
   describe("#id") do
     it("sets its ID when you save it") do
-      line = Line.new({:name => "NW Line", :id => nil})
-      line.save()
-      expect(Line.id()).to(be_an_instance_of(Fixnum))
+      test_line = Line.new({:name => "NW Line", :id => nil})
+      test_line.save()
+      expect(test_line.id()).to(be_an_instance_of(Fixnum))
     end
   end
+
+  describe("#stops_on_line") do
+    it("returns array of stops for that line") do
+      station1 = Station.new({:name => "Portland", :id => nil})
+      station1.save()
+      line1 = Line.new({:name => "NW line", :id => nil})
+      line1.save()
+      stop1 = Stop.new({:station_id => station1.id(), :line_id => line1.id(), :id => nil})
+      stop1.save()
+      stop2 = Stop.new({:station_id => station1.id(), :line_id => line1.id(), :id => nil})
+      stop2.save()
+      expect(line1.stops_on_line()).to(eq([stop1, stop2]))
+    end
+  end
+
+  describe("")
 
 end

@@ -1,0 +1,14 @@
+<h1>All stops for <%= @station.name() %></h1>
+
+<% if @station.stops_on_station().any?() %>
+  <ul>
+    <% @station.stops_on_station().each() do |station| %>
+    <% line_id = station.line_id() %>
+    <% line_id.get_line_name().each() do |line| %>
+    <li><%= line.name() %></li>
+    <% end %>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>No stations for you!</p>
+    <% end %>

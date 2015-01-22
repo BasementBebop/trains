@@ -1,0 +1,12 @@
+<h1>All stops for <%= @line.name() %></h1>
+
+<% if @line.stops_on_line().any?() %>
+  <ul>
+    <% @line.stops_on_line().each() do |stop| %>
+    <li><%= stop.line_id() %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>No stops for you!</p>
+    <% end %>
+    

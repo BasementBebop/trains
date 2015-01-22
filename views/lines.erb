@@ -1,0 +1,13 @@
+<h1>Lines:</h1>
+
+<% if @lines.any?() %>
+  <p>Select a line to see it's stops:</p>
+
+  <ul>
+    <% @lines.each do |line| %>
+      <li><a href="/lines/<%= line.id() %>"><%= line.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No current lines (use your legs stupid)</p>
+<% end %>
